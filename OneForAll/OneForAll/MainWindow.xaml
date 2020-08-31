@@ -1,0 +1,2276 @@
+﻿<pu:WindowX x:Class="OneForAll.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OneForAll"
+        xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="620" Width="1090" Closing="WindowX_Closing" Loaded="WindowX_Loaded" Background="White">
+
+    <!--窗体头自定义-->
+    <pu:WindowXCaption.Header>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <!--栏宽度自动，能够自适应窗口变大变小-->
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <Image Height="30" Width="30" Source="LOGO3.png"/>
+                <TextBlock FontSize="18"
+                       FontWeight="Light"
+                       VerticalAlignment="Center"
+                       Margin="10,0,30,0"
+                       Foreground="Black"
+                       Text="OneForAll" />
+            </StackPanel>
+            
+            
+            <StackPanel Grid.Column="2"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center">
+                <!--帮助图标-->
+                <Button FontSize="19"
+                        Width="28"
+                        Height="28"
+                        pu:ButtonHelper.ButtonStyle="Link"
+                        Foreground="#EAEAEA"
+                        Content="&#xe6ae;"
+                        FontFamily="/Resources/NeteaseExample/#iconfont"
+                        pu:ButtonHelper.HoverBrush="Black"
+                        VerticalAlignment="Center"
+                        Margin="0,0,10,2" />
+                <Grid Margin="0,0,10,0">
+                    <!--设置图标-->
+                    <Button FontSize="19"
+                            Width="28"
+                            Height="28"
+                            pu:ButtonHelper.ButtonStyle="Link"
+                            Foreground="#EAEAEA"
+                            Content="&#xe62a;"
+                            FontFamily="/Resources/NeteaseExample/#iconfont"
+                            pu:ButtonHelper.HoverBrush="Black"
+                            VerticalAlignment="Center"
+                            Margin="0,0,0,2" 
+                            />
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </pu:WindowXCaption.Header>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Background="#FFF0F0F0">
+            <StackPanel VerticalAlignment="Top">
+                <Image Height="65" Width="100" Source="LOGO3.png" Margin="0,15,0,15"/>
+                <Button x:Name="INICFGButton"  
+                        Content="INI CFG" FontSize="14" 
+                        Click="TabButon_Click"
+                        BorderBrush="{x:Null}"
+                        pu:ButtonHelper.ButtonStyle="Hollow"                     
+                        pu:ButtonHelper.HoverBrush="#00D6FF"
+                        Height="40"
+                        />
+                <Button x:Name="POWERButton"  
+                        Content="POWER" FontSize="14" 
+                        Click="TabButon_Click"
+                        BorderBrush="{x:Null}"
+                        pu:ButtonHelper.ButtonStyle="Hollow"                     
+                        pu:ButtonHelper.HoverBrush="#00D6FF"
+                        Height="40"
+                        />
+                <Button x:Name="CONTROLButton"  
+                        Content="CONTROL" FontSize="14" 
+                        Click="TabButon_Click"
+                        BorderBrush="{x:Null}"
+                        pu:ButtonHelper.ButtonStyle="Hollow"                     
+                        pu:ButtonHelper.HoverBrush="#00D6FF"
+                        Height="40"
+                        />
+                <Button x:Name="LORASEARCHButton"  
+                        Content="LORA SEARCH" FontSize="14" 
+                        Click="TabButon_Click"
+                        BorderBrush="{x:Null}"
+                        pu:ButtonHelper.ButtonStyle="Hollow"                     
+                        pu:ButtonHelper.HoverBrush="#00D6FF"
+                        Height="40"
+                        />
+                <Button x:Name="UPGRADEButton"  
+                        Content="UPGRADE" FontSize="14" 
+                        Click="TabButon_Click"
+                        BorderBrush="{x:Null}"
+                        pu:ButtonHelper.ButtonStyle="Hollow"                     
+                        pu:ButtonHelper.HoverBrush="#00D6FF"
+                        Height="40"
+                        />
+                <Button x:Name="SCANButton"  
+                        Content="SCAN" FontSize="14" 
+                        Click="TabButon_Click"
+                        BorderBrush="{x:Null}"
+                        pu:ButtonHelper.ButtonStyle="Hollow"                     
+                        pu:ButtonHelper.HoverBrush="#00D6FF"
+                        Height="40"
+                        />
+                <Button x:Name="ONESHOTButton"  
+                        Content="ONE KEY" FontSize="14" 
+                        Click="TabButon_Click"
+                        BorderBrush="{x:Null}"
+                        pu:ButtonHelper.ButtonStyle="Hollow"                     
+                        pu:ButtonHelper.HoverBrush="#00D6FF"
+                        Height="40"
+                        />
+                <Button x:Name="AboutButton"  
+                        Content="About" FontSize="14" 
+                        Click="TabButon_Click"
+                        BorderBrush="{x:Null}"
+                        pu:ButtonHelper.ButtonStyle="Hollow"                     
+                        pu:ButtonHelper.HoverBrush="#00D6FF"
+                        Height="40"
+                        />
+            </StackPanel>
+            <StackPanel VerticalAlignment="Bottom">
+                <!--串口选择-->
+                <ComboBox x:Name = "PortSelect" 
+                            Width="87" Height="25"
+                            pu:ComboBoxHelper.Watermark="请选择串口"
+                            pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                            pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                            Margin="0,3"
+                            />
+                <!--LORA选择-->
+                <ComboBox x:Name = "LoraSelect" 
+                            Canvas.Left="16" Canvas.Top="41" 
+                            Width="87" Height="25" 
+                            SelectionChanged="LoraSelect_SelectionChanged"
+                            pu:ComboBoxHelper.Watermark="请选择模块"
+                            pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                            pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                            Margin="0,3"
+                            >
+                    <ComboBoxItem Content="易佰特"/>
+                    <ComboBoxItem Content="捷迅易联"/>
+                </ComboBox>
+                <!--ID框-->
+                <TextBox x:Name = "PortIDTextbox" TextWrapping="Wrap" 
+                         Text="1"
+                            Width="87" FontSize="14" HorizontalAlignment="Center"
+                         
+                            Canvas.Left="16" Canvas.Top="74" Height="25"
+                            pu:TextBoxHelper.Watermark="请输入ID"
+                            pu:TextBoxHelper.FocusedBorderBrush="#969696"
+                            pu:TextBoxHelper.FocusedShadowColor="#969696"   
+                            Margin="0,3"
+                            />
+                <Button x:Name="PortButon" Content="Open" 
+                        Height="28"
+                        FontSize="14" Click="PortButon_Click"
+                        pu:ButtonHelper.ClickStyle="Sink"
+                        Background="#C83F3F3F"
+                        pu:ButtonHelper.HoverBrush="#3F3F3F"
+                        Margin="20,16,20,5"
+                        />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="1">
+            <TabControl x:Name="MainTabControl" 
+                        Margin="0,0,0,0" 
+                        BorderBrush="{x:Null}" 
+                        Padding="0,2,0,0" 
+                        >
+                <TabItem x:Name="IniCfgItem" Header="TabItem" Height="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <StackPanel>
+                                <TextBlock Text="LORA SET"  FontSize="20" FontWeight="SemiBold" Foreground="#FF0068D0"/>
+                                <TextBlock Text="捷迅易联"  FontSize="16" FontWeight="SemiBold" Foreground="DimGray"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Text="RF-fq:" FontSize="14"
+                                               Grid.Row="0"
+                                               Grid.Column="0" 
+                                               Margin="5,2"
+                                               />
+                                    <TextBox x:Name="jxyl_Freq" HorizontalAlignment="Left" 
+                                                Height="18"
+                                                Width="74" 
+                                                Text="410"
+                                                pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                pu:TextBoxHelper.IsClearButtonVisible="True" 
+                                                Grid.Row="0"
+                                               Grid.Column="1"
+                                             Margin="5,2"
+                                                 />
+
+                                    <TextBlock Text="RF-fc:" FontSize="14" 
+                                               Grid.Row="0"
+                                               Grid.Column="2"
+                                               Margin="5,2"
+                                               />
+                                    <ComboBox x:Name="jxyl_factor"  
+                                                  Height="18" SelectedIndex="0" 
+                                                  Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                                  Grid.Row="0"
+                                                  Grid.Column="3"
+                                              Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="128"/>
+                                        <ComboBoxItem Content="256"/>
+                                        <ComboBoxItem Content="512"/>
+                                        <ComboBoxItem Content="1024"/>
+                                        <ComboBoxItem Content="2048"/>
+                                        <ComboBoxItem Content="4096"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="RF-mode:" FontSize="14" 
+                                               Grid.Row="0"
+                                                  Grid.Column="4"
+                                               Margin="5,2"
+                                               />
+                                    <ComboBox x:Name="jxyl_Mode"  
+                                                  Height="18" SelectedIndex="0" 
+                                                  Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                              Grid.Row="0"
+                                                  Grid.Column="5"
+                                              Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="Normal"/>
+                                        <ComboBoxItem Content="Saving"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="RF-BW:" FontSize="14"  
+                                               Grid.Row="0"
+                                                  Grid.Column="6"
+                                               Margin="5,2"
+                                               />
+                                    <ComboBox x:Name="jxyl_BW"  
+                                                  Height="18" SelectedIndex="0" 
+                                                  Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                              Grid.Row="0"
+                                                  Grid.Column="7"
+                                              Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="62.5Kbp"/>
+                                        <ComboBoxItem Content="125Kbp"/>
+                                        <ComboBoxItem Content="250Kbp"/>
+                                        <ComboBoxItem Content="500Kbp"/>
+                                    </ComboBox>
+                                    <TextBlock Text="Node-ID:" FontSize="14"  
+                                               Grid.Row="1"
+                                                  Grid.Column="0"
+                                              Margin="5,2"
+                                               />
+                                    <TextBox x:Name="jxyl_NodeId1" HorizontalAlignment="Left" 
+                                                 Height="18" Width="74" 
+                                                 Text="0"
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                              Grid.Row="1"
+                                                  Grid.Column="1"
+                                              Margin="5,2"
+                                                 />
+                                    <TextBox x:Name="jxyl_NodeId2" HorizontalAlignment="Left" 
+                                                 Height="18" Width="74"
+                                                 Text="0"
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="2"
+                                                  Grid.Column="1"
+                                              Margin="5,2"
+                                                 />
+
+                                    <TextBlock Text="NetID:" FontSize="14"  
+                                               Grid.Row="1"
+                                                  Grid.Column="2"
+                                              Margin="5,2"
+                                               />
+                                    <TextBox x:Name="jxyl_NetId" HorizontalAlignment="Left" 
+                                                 Height="18" Width="74" 
+                                                Text="0"
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="1"
+                                                  Grid.Column="3"
+                                              Margin="5,2"
+                                                 />
+
+                                    <TextBlock Text="Power:" FontSize="14" 
+                                               Grid.Row="1"
+                                                  Grid.Column="4"
+                                              Margin="5,2"
+                                               />
+                                    <ComboBox x:Name="jxyl_Power" VerticalAlignment="Top" 
+                                                  Height="18" SelectedIndex="0" 
+                                                  Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                               Grid.Row="1"
+                                                  Grid.Column="5"
+                                              Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="1"/>
+                                        <ComboBoxItem Content="2"/>
+                                        <ComboBoxItem Content="3"/>
+                                        <ComboBoxItem Content="4"/>
+                                        <ComboBoxItem Content="5"/>
+                                        <ComboBoxItem Content="6"/>
+                                        <ComboBoxItem Content="7"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="波特率:" FontSize="14"  
+                                               Grid.Row="1"
+                                                  Grid.Column="6"
+                                              Margin="5,2"
+                                               />
+                                    <ComboBox x:Name="jxyl_Baudrate"  
+                                                  Height="18" SelectedIndex="0" 
+                                                 Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                              Grid.Row="1"
+                                                  Grid.Column="7"
+                                              Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="1200"/>
+                                        <ComboBoxItem Content="2400"/>
+                                        <ComboBoxItem Content="4800"/>
+                                        <ComboBoxItem Content="9600"/>
+                                        <ComboBoxItem Content="19200"/>
+                                        <ComboBoxItem Content="38400"/>
+                                        <ComboBoxItem Content="57600"/>
+                                        <ComboBoxItem Content="115200"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="奇偶校验:" FontSize="14"  
+                                                Grid.Row="2"
+                                                  Grid.Column="2"
+                                              Margin="5,2"
+                                               />
+                                    <ComboBox x:Name="jxyl_Parity" 
+                                                  Height="18" SelectedIndex="0" 
+                                                  Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                              Grid.Row="2"
+                                                  Grid.Column="3"
+                                              Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="No"/>
+                                        <ComboBoxItem Content="ODD"/>
+                                        <ComboBoxItem Content="EVEN"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="模块型号:" FontSize="14"  
+                                               Grid.Row="2"
+                                                  Grid.Column="4"
+                                              Margin="5,2"
+                                               />
+                                    <ComboBox x:Name="jxyl_module" 
+                                                  Height="18" SelectedIndex="0" 
+                                                  Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                              Grid.Row="2"
+                                                  Grid.Column="5"
+                                              Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="433"/>
+                                        <ComboBoxItem Content="915"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="易佰特" FontSize="16" FontWeight="SemiBold" Foreground="DimGray" 
+                                                Grid.Row="3"
+                                                  Grid.Column="0" Margin="0,5,0,0"
+                                               />
+
+                                    <TextBlock Text="波特率：" FontSize="14"  
+                                               Grid.Row="4"
+                                               Grid.Column="0"
+                                               Margin="5,2"
+                                               />
+                                    <ComboBox x:Name="ybt_Baudrate"
+                                                  Height="18" SelectedIndex="0" 
+                                                  Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                              Grid.Row="4"
+                                               Grid.Column="1"
+                                               Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="1200bps"/>
+                                        <ComboBoxItem Content="2400bps"/>
+                                        <ComboBoxItem Content="4800bps"/>
+                                        <ComboBoxItem Content="9600bps"/>
+                                        <ComboBoxItem Content="19200bps"/>
+                                        <ComboBoxItem Content="38400bps"/>
+                                        <ComboBoxItem Content="57600bps"/>
+                                        <ComboBoxItem Content="115200bps"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="奇偶校验:" FontSize="14"  
+                                               Grid.Row="4"
+                                               Grid.Column="2"
+                                               Margin="5,2"
+                                               />
+                                    <ComboBox x:Name="ybt_Parity"
+                                                  Height="18" SelectedIndex="0" 
+                                                  Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                              Grid.Row="4"
+                                               Grid.Column="3"
+                                               Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="8N1"/>
+                                        <ComboBoxItem Content="801"/>
+                                        <ComboBoxItem Content="8E1"/>
+                                        <ComboBoxItem Content="8N1"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="空中速率:" FontSize="14"  
+                                               Grid.Row="4"
+                                               Grid.Column="4"
+                                               Margin="5,2"
+                                               />
+                                    <ComboBox x:Name="ybt_AirRate"
+                                                  Height="18" SelectedIndex="0" 
+                                                  Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                              Grid.Row="4"
+                                               Grid.Column="5"
+                                               Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="0.3Kbps"/>
+                                        <ComboBoxItem Content="1.2Kbps"/>
+                                        <ComboBoxItem Content="2.4Kbps"/>
+                                        <ComboBoxItem Content="4.8Kbps"/>
+                                        <ComboBoxItem Content="9.6Kbps"/>
+                                        <ComboBoxItem Content="19.2Kbps"/>
+                                        <ComboBoxItem Content="38.4Kbps"/>
+                                        <ComboBoxItem Content="62.5Kbps"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="分包包长:" FontSize="14"  
+                                                Grid.Row="4"
+                                               Grid.Column="6"
+                                               Margin="5,2"
+                                                />
+                                    <ComboBox x:Name="ybt_PacketSize"
+                                                  Height="18" SelectedIndex="0" 
+                                                  Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                              Grid.Row="4"
+                                               Grid.Column="7"
+                                               Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="240Bytes"/>
+                                        <ComboBoxItem Content="128Bytes"/>
+                                        <ComboBoxItem Content="64Bytes"/>
+                                        <ComboBoxItem Content="32Bytes"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="模块型号:" FontSize="14"  
+                                               Grid.Row="5"
+                                               Grid.Column="0"
+                                               Margin="5,2"
+                                               />
+                                    <ComboBox x:Name="ybt_module" 
+                                                  Height="18" SelectedIndex="0" 
+                                                  Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                          Grid.Row="5"
+                                               Grid.Column="1"
+                                               Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="400T"/>
+                                        <ComboBoxItem Content="900T"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="WOR角色:" FontSize="14" 
+                                           Grid.Row="5"
+                                               Grid.Column="2"
+                                               Margin="5,2"
+                                           />
+                                    <ComboBox x:Name="ybt_Character" 
+                                                  Height="18" SelectedIndex="0" 
+                                                  Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                             Grid.Row="5"
+                                               Grid.Column="3"
+                                               Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="接收方"/>
+                                        <ComboBoxItem Content="发射方"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="WOR周期:" FontSize="14"
+                                               Grid.Row="5"
+                                               Grid.Column="4"
+                                               Margin="5,2"
+                                               />
+                                    <ComboBox x:Name="ybt_Cycle"
+                                                  Height="18" SelectedIndex="0" 
+                                                  Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                                Grid.Row="5"
+                                               Grid.Column="5"
+                                               Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="500ms"/>
+                                        <ComboBoxItem Content="1000ms"/>
+                                        <ComboBoxItem Content="1500ms"/>
+                                        <ComboBoxItem Content="2000ms"/>
+                                        <ComboBoxItem Content="2500ms"/>
+                                        <ComboBoxItem Content="3000ms"/>
+                                        <ComboBoxItem Content="3500ms"/>
+                                        <ComboBoxItem Content="4000ms"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="模块功率:" FontSize="14" 
+                                                Grid.Row="5"
+                                               Grid.Column="6"
+                                               Margin="5,2"
+                                               />
+                                    <ComboBox x:Name="ybt_Power"
+                                                  Height="18" SelectedIndex="0" 
+                                                  Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                              Grid.Row="5"
+                                               Grid.Column="7"
+                                               Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="22dBm"/>
+                                        <ComboBoxItem Content="17dBm"/>
+                                        <ComboBoxItem Content="13dBm"/>
+                                        <ComboBoxItem Content="10dBm"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="传输方式:" FontSize="14" 
+                                               Grid.Row="6"
+                                               Grid.Column="0"
+                                               Margin="5,2"
+                                               />
+                                    <ComboBox x:Name="ybt_TransforMode" 
+                                                  Height="18" SelectedIndex="0"
+                                                  Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                               Grid.Row="6"
+                                               Grid.Column="1"
+                                               Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="透传"/>
+                                        <ComboBoxItem Content="定点"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="中继使能:" FontSize="14"  
+                                               Grid.Row="6"
+                                               Grid.Column="2"
+                                               Margin="5,2"
+                                               />
+                                    <ComboBox x:Name="ybt_RelayEnable" 
+                                                  Height="18" SelectedIndex="0" 
+                                                  Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                              Grid.Row="6"
+                                               Grid.Column="3"
+                                               Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="关闭"/>
+                                        <ComboBoxItem Content="打开"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="LBT使能:" FontSize="14" Grid.Row="6"
+                                               Grid.Column="4"
+                                               Margin="5,2"/>
+                                    <ComboBox x:Name="ybt_LBTEnable"
+                                                  Height="18" SelectedIndex="0" 
+                                                  Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                              Grid.Row="6"
+                                               Grid.Column="5"
+                                               Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="关闭"/>
+                                        <ComboBoxItem Content="打开"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="数据RSSI:" FontSize="14"  
+                                               Grid.Row="6"
+                                               Grid.Column="6"
+                                               Margin="5,2"
+                                               />
+                                    <ComboBox x:Name="ybt_DataRSSI" 
+                                                  Height="18" SelectedIndex="0" 
+                                                 Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                               Grid.Row="6"
+                                               Grid.Column="7"
+                                               Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="关闭"/>
+                                        <ComboBoxItem Content="打开"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="信道RSSI:" FontSize="14"
+                                               Grid.Row="7"
+                                               Grid.Column="0"
+                                               Margin="5,2"
+                                               />
+                                    <ComboBox x:Name="ybt_ChannelRSSI" 
+                                                  Height="18" SelectedIndex="0" 
+                                                  Width="74"
+                                                  pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                                  pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                              Grid.Row="7"
+                                               Grid.Column="1"
+                                               Margin="5,2"
+                                                  >
+                                        <ComboBoxItem Content="关闭"/>
+                                        <ComboBoxItem Content="打开"/>
+                                    </ComboBox>
+
+                                    <TextBlock Text="模块地址:" FontSize="14"  
+                                               Grid.Row="7"
+                                               Grid.Column="2"
+                                               Margin="5,2"
+                                               />
+                                    <TextBox x:Name="ybt_DeviceId" HorizontalAlignment="Left" 
+                                                 Height="18" Width="74" 
+                                                 Text="0"
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="7"
+                                               Grid.Column="3"
+                                               Margin="5,2"
+                                                 />
+
+                                    <TextBlock Text="频率信道:" FontSize="14"  
+                                               Grid.Row="7"
+                                               Grid.Column="4"
+                                               Margin="5,2"
+                                               />
+                                    <TextBox x:Name="ybt_FreqChannel" HorizontalAlignment="Left"
+                                                 Height="18" Width="74" 
+                                                 Text="0"
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="7"
+                                               Grid.Column="5"
+                                               Margin="5,2"
+                                                 />
+
+                                    <TextBlock Text="网络ID:" FontSize="14" 
+                                                 Grid.Row="7"
+                                               Grid.Column="6"
+                                               Margin="5,2"
+                                                />
+                                    <TextBox x:Name="ybt_NetId" HorizontalAlignment="Left" 
+                                                 Height="18" Width="74" 
+                                                 Text="0"
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="7"
+                                               Grid.Column="7"
+                                               Margin="5,2"
+                                                 />
+
+                                    <TextBlock Text="密钥:" FontSize="14" 
+                                               Grid.Row="8"
+                                               Grid.Column="0"
+                                               Margin="5,2"
+                                               />
+                                    <TextBox x:Name="ybt_key" HorizontalAlignment="Left" 
+                                                 Height="18"  Width="74" 
+                                                 Text="0"
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="8"
+                                               Grid.Column="1"
+                                               Margin="5,2"
+                                                 />
+                                </Grid>
+                                <TextBlock Text="Parameter SET"  FontSize="20" FontWeight="SemiBold" Foreground="#FF0068D0" Margin="0,10,0,0"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Text="POWER" FontSize="16" 
+                                               FontWeight="SemiBold" Foreground="DimGray"
+                                               Grid.Row="0"
+                                               Grid.Column="0"
+                                               Margin="5,2"
+                                               />
+
+                                    <TextBlock Text="ID:" FontSize="14"  
+                                               Grid.Row="1"
+                                               Grid.Column="0"
+                                               Margin="5,2"
+                                               />
+                                    <TextBox x:Name="P_DeviceID" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72" 
+                                                 
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="1"
+                                               Grid.Column="1"
+                                               Margin="5,2"
+                                                 />
+                                    <TextBlock Text="ID排列方式:" FontSize="14"  
+                                                Grid.Row="1"
+                                               Grid.Column="2"
+                                               Margin="5,2"/>
+                                    <CheckBox x:Name="P_IDMode1CheckBox" Height="18" 
+                                                  Width="46"
+                                                  Content="+"
+                                                  pu:CheckBoxHelper.CheckBoxStyle="Switch"
+                                                  pu:CheckBoxHelper.BoxHeight="16"
+                                                  pu:CheckBoxHelper.BoxWidth="24"
+                                                  pu:CheckBoxHelper.CheckedBackground="#3F3F3F"
+                                                  pu:CheckBoxHelper.CheckedContent="-"
+                                              Grid.Row="1"
+                                               Grid.Column="3"
+                                               Margin="5,2"
+                                                  />
+                                    <TextBox x:Name="P_IDMode" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72"
+                                                 
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="1"
+                                               Grid.Column="4"
+                                               Margin="5,2"
+                                                 />
+                                    <TextBlock Text="子阵个数MAX:" FontSize="14"  
+                                               Grid.Row="1"
+                                               Grid.Column="5"
+                                               Margin="5,2"
+                                               />
+                                    <TextBox x:Name="P_IDMAX" HorizontalAlignment="Left"
+                                                 Height="18" Width="72"
+                                              
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="1"
+                                               Grid.Column="6"
+                                               Margin="5,2"
+                                                 />
+
+                                    <TextBlock Text="CONTROL" 
+                                               FontSize="16" FontWeight="SemiBold" Foreground="DimGray"
+                                               Grid.Row="2"
+                                               Grid.Column="0"
+                                               Margin="5,2"
+                                               />
+
+                                    <TextBlock Text="ID:" FontSize="14"  
+                                               Grid.Row="3"
+                                               Grid.Column="0"
+                                               Margin="5,2"
+                                               />
+                                    <TextBox x:Name="C_DeviceID" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72" 
+                                                 
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="3"
+                                               Grid.Column="1"
+                                               Margin="5,2"
+                                                 />
+                                    <TextBlock Text="ID排列方式:" FontSize="14"  
+                                               Grid.Row="3"
+                                               Grid.Column="2"
+                                               Margin="5,2"/>
+                                    <CheckBox x:Name="C_IDMode1CheckBox" Height="18" 
+                                                  Width="46"
+                                                  Content="+"
+                                                  pu:CheckBoxHelper.CheckBoxStyle="Switch"
+                                                  pu:CheckBoxHelper.BoxHeight="16"
+                                                  pu:CheckBoxHelper.BoxWidth="24"
+                                                  pu:CheckBoxHelper.CheckedBackground="#3F3F3F"
+                                                  pu:CheckBoxHelper.CheckedContent="-"
+                                              Grid.Row="3"
+                                               Grid.Column="3"
+                                               Margin="5,2"    
+                                              />
+                                    <TextBox x:Name="C_IDMode" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72" 
+                                            
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="3"
+                                               Grid.Column="4"
+                                               Margin="5,2"
+                                                 />
+                                    <TextBlock Text="子阵个数MAX:" FontSize="14"  
+                                               Grid.Row="3"
+                                               Grid.Column="5"
+                                               Margin="5,2"/>
+                                    <TextBox x:Name="C_IDMAX" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72"
+                                                 
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="3"
+                                               Grid.Column="6"
+                                               Margin="5,2"
+                                                 />
+
+                                    <TextBlock Text="Longitude:" FontSize="14"  
+                                               Grid.Row="4"
+                                               Grid.Column="0"
+                                               Margin="5,2"/>
+                                    <TextBox x:Name="INILongitudeTextBox" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72" 
+                                                 
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="4"
+                                               Grid.Column="1"
+                                               Margin="5,2"
+                                                 />
+                                    <TextBlock Text="Latitude:" FontSize="14"  
+                                               Grid.Row="4"
+                                               Grid.Column="2"
+                                               Margin="5,2"/>
+                                    <TextBox x:Name="INILatitudeTextBox" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72" 
+                                                 
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="4"
+                                               Grid.Column="3"
+                                               Margin="5,2"    
+                                             />
+                                    <TextBlock Text="TimeZone:" FontSize="14"  
+                                               Grid.Row="4"
+                                               Grid.Column="4"
+                                               Margin="5,2"/>
+                                    <TextBox x:Name="INITimeZoneTextBox" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72"
+                                                 
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="4"
+                                               Grid.Column="5"
+                                               Margin="5,2"    
+                                             />
+
+                                    <TextBlock Text="ModuleWidth:" FontSize="14"  
+                                               Grid.Row="5"
+                                               Grid.Column="0"
+                                               Margin="5,2"/>
+                                    <TextBox x:Name="INIModuleWidthTextBox" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72" 
+                                                 
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="5"
+                                               Grid.Column="1"
+                                               Margin="5,2"    
+                                             />
+                                    <TextBlock Text="PostSpace:" FontSize="14"  
+                                               Grid.Row="5"
+                                               Grid.Column="2"
+                                               Margin="5,2"/>
+                                    <TextBox x:Name="INIPostSpaceTextBox" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72" 
+                                                 
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="5"
+                                               Grid.Column="3"
+                                               Margin="5,2"    
+                                             />
+                                    <TextBlock Text="TerrSlope:" FontSize="14"  
+                                               Grid.Row="5"
+                                               Grid.Column="4"
+                                               Margin="5,2"/>
+                                    <TextBox x:Name="INITerrSlopeTextBox" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72" 
+                                                 
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="5"
+                                               Grid.Column="5"
+                                               Margin="5,2"    
+                                             />
+
+
+                                    <TextBlock Text="Accuracy:" FontSize="14"  
+                                               Grid.Row="6"
+                                               Grid.Column="0"
+                                               Margin="5,2"/>
+                                    <TextBox x:Name="INIAccuracyTextBox" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72" 
+                                                 
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="6"
+                                               Grid.Column="1"
+                                               Margin="5,2"    
+                                             />
+                                    <TextBlock Text="MaxMotorCur:" FontSize="14"  
+                                               Grid.Row="6"
+                                               Grid.Column="2"
+                                               Margin="5,2"/>
+                                    <TextBox x:Name="INIMaxMotorCurTextBox" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72" 
+                                                 
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="6"
+                                               Grid.Column="3"
+                                               Margin="5,2"    
+                                             />
+
+                                    <TextBlock Text="Orientation:" FontSize="14"  
+                                               Grid.Row="6"
+                                               Grid.Column="4"
+                                               Margin="5,2"/>
+                                    <CheckBox x:Name="INIEastwardCheckBox" Height="18" 
+                                                  Width="72"
+                                                  Content="East"
+                                                  pu:CheckBoxHelper.CheckBoxStyle="Switch"
+                                                  pu:CheckBoxHelper.BoxHeight="16"
+                                                  pu:CheckBoxHelper.BoxWidth="24"
+                                                  pu:CheckBoxHelper.CheckedBackground="#3F3F3F"
+                                                  pu:CheckBoxHelper.CheckedContent="West"
+                                                  Grid.Row="6"
+                                               Grid.Column="5"
+                                               Margin="5,2"
+                                              />
+
+                                    <TextBlock Text="ESoftLimit:" FontSize="14"  
+                                               Grid.Row="7"
+                                               Grid.Column="0"
+                                               Margin="5,2"/>
+                                    <TextBox x:Name="INIESoftLimitTextBox" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72" 
+                                                
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="7"
+                                               Grid.Column="1"
+                                               Margin="5,2"
+                                                 />
+                                    <TextBlock Text="WSoftLimit:" FontSize="14"  
+                                               Grid.Row="7"
+                                               Grid.Column="2"
+                                               Margin="5,2"/>
+                                    <TextBox x:Name="INIWSoftLimitTextBox" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72" 
+                                                 
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="7"
+                                               Grid.Column="3"
+                                               Margin="5,2"    
+                                             />
+                                    <TextBlock Text="CleanAngle:" FontSize="14"  
+                                               Grid.Row="8"
+                                               Grid.Column="2"
+                                               Margin="5,2"/>
+                                    <TextBox x:Name="INICleanAngleTextBox" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72" 
+                                                 
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="8"
+                                               Grid.Column="3"
+                                               Margin="5,2"    
+                                             />
+
+                                    <TextBlock Text="NightDock:" FontSize="14"  
+                                               Grid.Row="8"
+                                               Grid.Column="0"
+                                               Margin="5,2"/>
+                                    <TextBox x:Name="ININightDockTextBox" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72" 
+                                                 
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="8"
+                                               Grid.Column="1"
+                                               Margin="5,2"    
+                                             />
+
+                                    <TextBlock Text="Up" FontSize="14"  
+                                               Grid.Row="9"
+                                               Grid.Column="1"
+                                               Margin="5,2"   />
+                                    <TextBlock Text="Down" FontSize="14"  
+                                               Grid.Row="9"
+                                               Grid.Column="2"
+                                               Margin="5,2"   
+                                               />
+
+                                    <TextBlock Text="ProWindSpeed:" FontSize="14"  
+                                               Grid.Row="10"
+                                               Grid.Column="0"
+                                               Margin="5,2"/>
+                                    <TextBox x:Name="INIProWindUpTextBox" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72" 
+                                                 
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="10"
+                                               Grid.Column="1"
+                                               Margin="5,2"    
+                                             />
+                                    <TextBlock Text="ProDelay:" FontSize="14"  
+                                               Grid.Row="11"
+                                               Grid.Column="0"
+                                               Margin="5,2"/>
+                                    <TextBox x:Name="INIProTimeUpTextBox" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72" 
+                                                 
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             Grid.Row="11"
+                                               Grid.Column="1"
+                                               Margin="5,2"       
+                                             />
+
+                                    <TextBox x:Name="INIProTimeDownTextBox" HorizontalAlignment="Left" 
+                                                 Height="18" Width="72" 
+                                                 
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                                 
+                                             Grid.Row="11"
+                                               Grid.Column="2"
+                                               Margin="5,2"   
+                                             />
+
+                                    <TextBox x:Name="INIProWindDownTextBox" HorizontalAlignment="Left" 
+                                                 Height="18"  Width="72" 
+                                                
+                                                 pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                                 pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                                 pu:TextBoxHelper.IsClearButtonVisible="True"
+                                                
+                                             Grid.Row="10"
+                                               Grid.Column="2"
+                                               Margin="5,2"   
+                                             />
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <StackPanel>
+                                <Button x:Name="INICreateButton" Content="Create INI" 
+                                        Width="92" Height="28" FontSize="14" 
+                                        Click="ButtonINI_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                        Background="#C83F3F3F"
+                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="30,50"
+                                        />
+
+                                <Button x:Name="INIOpenButton" Content="Read INI" 
+                                        Width="92" Height="28" FontSize="14" 
+                                        Click="ButtonINI_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                        Background="#C83F3F3F"
+                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="30,50"
+                                        />
+
+                                <Button x:Name="INIModifyButton" Content="Modify INI" 
+                                        Width="92" Height="28" FontSize="14" 
+                                        Click="ButtonINI_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                        Background="#C83F3F3F"
+                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="30,50"
+                                        />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="PowerItem" Header="TabItem" Height="0">
+                    <DockPanel LastChildFill="True">
+                                           
+                        <StackPanel  Width="Auto"
+                                     Height="Auto" 
+                                    Background="#FFF0F0F0" 
+                                    DockPanel.Dock="Right" HorizontalAlignment="Right" 
+                                    >
+                            <TextBlock Text="Alarm" FontSize="20" 
+                                       FontWeight="Bold" Foreground="Red" 
+                                       Margin="0,0,100,0" 
+                                       />
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Ellipse x:Name="P_MotorOverCurIndicator" Height="15" 
+                                         Width="15" Fill="Red"
+                                         Margin="15,0,0,0"/>
+                                <TextBlock Text="MotorOverCur" FontSize="14"
+                                           Width="110" Margin="15,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Ellipse x:Name="P_BatSocLowIndicator" Height="15" 
+                                         Width="15" Fill="Red"
+                                         Margin="15,0,0,0"/>
+                                <TextBlock Text="BatSOCLow" FontSize="14"
+                                           Width="110" Margin="15,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Ellipse x:Name="P_BatErrorIndicator" Height="15" 
+                                         Width="15" Fill="Red"
+                                         Margin="15,0,0,0"/>
+                                <TextBlock Text="BatError" FontSize="14"
+                                           Width="110" Margin="15,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Ellipse x:Name="P_BatNoComIndicator" Height="15" 
+                                         Width="15" Fill="Red"
+                                         Margin="15,0,0,0"/>
+                                <TextBlock Text="BatNoCom" FontSize="14"
+                                           Width="110" Margin="15,0,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+
+
+
+
+                        <StackPanel Height="Auto" Width="Auto" Orientation="Horizontal" DockPanel.Dock="Bottom" 
+                                    Background="#FFE3E3E3" >
+
+                            <Button x:Name="P_ResetButton" Content="Reset" 
+                                        Width="92" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="30,50"
+                                        />
+                            <Button x:Name="P_SleepButton" Content="Sleep" 
+                                        Width="92" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="30,50"
+                                        />
+                            <Button x:Name="P_LowPowerButton" Content="LowPower" 
+                                        Width="92" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="30,50,400,50"
+                                        />
+                        </StackPanel>
+                        <Border BorderBrush="#FFFAFAFA" BorderThickness="0" Margin="15,5,5,5">
+                            <StackPanel Margin="0" Width="Auto" Height="Auto" Background="White">
+                                <Border BorderBrush="#FF0066CC" BorderThickness="0,0,0,2" Margin="10,10,30,0">
+                                    <TextBlock Text="Information" 
+                                                   Margin="0,5,0,0"
+                                                   FontSize="20" FontWeight="SemiBold" 
+                                                   Foreground="#FF0068D0"/>
+                                </Border>
+                                <TextBlock Text="Version"
+                                            FontSize="16" FontWeight="SemiBold" Foreground="DimGray"
+                                            />
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Firmware:" FontSize="14" 
+                                               Margin="10,0" Width="95"/>
+                                    <TextBlock x:Name="P_FirmwareTextBlock" Text="V0.00" FontSize="14"  
+                                               FontWeight="SemiBold" 
+                                               Width="60"/>
+                                    <TextBlock Text="Hardware:" FontSize="14" 
+                                               Width="115"/>
+                                    <TextBlock x:Name="P_HardwareTextBlock" Text="V0" 
+                                               FontSize="14" FontWeight="SemiBold"
+                                               Width="60"/>
+                                </StackPanel>
+                                <TextBlock Text="Sensor" FontSize="16" FontWeight="SemiBold" Foreground="DimGray"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="SysCur:" FontSize="14" 
+                                               Margin="10,0" Width="95"/>
+                                    <TextBlock x:Name="P_SysCurTextBlock" Text="0.00A" FontSize="14"  
+                                               FontWeight="SemiBold" 
+                                               Width="60"/>
+                                    <TextBlock Text="SysTemperature:" FontSize="14" 
+                                               Width="115"/>
+                                    <TextBlock x:Name="P_SysTemperatureTextBlock" Text="25℃" 
+                                               FontSize="14" FontWeight="SemiBold"
+                                               Width="60"/>
+                                </StackPanel>
+                                <TextBlock Text="PVPower" FontSize="16" FontWeight="SemiBold" Foreground="DimGray"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="P_PVBuckVol:" FontSize="14" 
+                                               Margin="10,0" Width="95"/>
+                                    <TextBlock x:Name="P_PVBuckVolTextBlock" Text="00.00V" FontSize="14"  
+                                               FontWeight="SemiBold" 
+                                               Width="60"/>
+                                </StackPanel>
+                                <TextBlock Text="BatteryPower" FontSize="16" 
+                                           FontWeight="SemiBold" Foreground="DimGray"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="BatVol /SOC:" FontSize="14"
+                                               Margin="10,0" Width="95"/>
+                                    <TextBlock x:Name="P_BatVolSocTextBlock" Text="00.00/00%" 
+                                               FontSize="14" FontWeight="SemiBold" 
+                                               Width="90"/>
+                                    <TextBlock Text="BatCur:" FontSize="14"
+                                               Width="65"/>
+                                    <TextBlock x:Name="P_BatCurTextBlock" Text="0.00A" 
+                                               FontSize="14" FontWeight="SemiBold"
+                                               Width="50"/>
+                                    <TextBlock Text="BatTemp:" FontSize="14"
+                                               Width="65"/>
+                                    <TextBlock x:Name="P_BatTempTextBlock" Text="0.35℃" 
+                                               FontSize="14" FontWeight="SemiBold"
+                                               Width="50"/>
+                                </StackPanel>
+
+                                <TextBlock Text="Charge" FontSize="16" FontWeight="SemiBold" Foreground="DimGray"/>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Status:" FontSize="14"
+                                               Margin="10,0" Width="45"/>
+                                    <Ellipse x:Name="P_HeatIndicator" Height="15" Width="15" Fill="Green"/>
+                                    <TextBlock Text="Heating" FontSize="14" FontWeight="SemiBold" 
+                                               Margin="10,0,0,0"
+                                               Width="80"
+                                               />
+                                    <Ellipse x:Name="P_PreChargeIndicator" Height="15" Width="15" Fill="Green"/>
+                                    <TextBlock Text="Prechrage" FontSize="14" FontWeight="SemiBold"
+                                               Margin="10,0,0,0"
+                                               Width="80"/>
+                                    <Ellipse x:Name="P_CCCVIndicator" Height="15" Width="15" Fill="Green"/>
+                                    <TextBlock Text="CC-CV" FontSize="14" FontWeight="SemiBold"
+                                               Margin="10,0,0,0"
+                                               Width="80"/>
+                                    <Ellipse x:Name="P_TerminationIndicator" Height="15" Width="15" Fill="Green"/>
+                                    <TextBlock Text="Termination" FontSize="14" FontWeight="SemiBold"
+                                               Margin="10,0,0,0"
+                                               Width="90"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Error:" FontSize="14"
+                                               Margin="10,0" Width="45"/>
+                                    <Ellipse x:Name="P_MaxTimeIndicator" Height="15" Width="15" Fill="Green"/>
+                                    <TextBlock Text="MaxTime" FontSize="14" FontWeight="SemiBold"
+                                               Margin="10,0,0,0"
+                                               Width="80"/>
+                                    <Ellipse x:Name="P_BatShortIndicator" Height="15" Width="15" Fill="Green"/>
+                                    <TextBlock Text="BatShort" FontSize="14" FontWeight="SemiBold"
+                                               Margin="10,0,0,0"
+                                               Width="80"/>
+                                    <Ellipse x:Name="P_BatMissingIndicator" Height="15" Width="15" Fill="Green"/>
+                                    <TextBlock Text="BatMissing" FontSize="14" FontWeight="SemiBold"
+                                               Margin="10,0,0,0"
+                                               Width="80"/>
+                                </StackPanel>
+                                <Border BorderBrush="#FF0066CC" BorderThickness="0,0,0,2" Margin="10,0,30,0">
+                                    <TextBlock Text="NewID" Margin="0,5,0,0"
+                                                   FontSize="20" FontWeight="SemiBold" 
+                                                   Foreground="#FF0068D0"/>
+                                </Border>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBox x:Name="P_NewIDTextBox" Height="24" Text="1" 
+                                             Width="41" FontSize="14" HorizontalAlignment="Center"
+                                             Margin="10,0"/>
+
+                                    <CheckBox x:Name="P_BoardIDCheckBox" Content="Boardcast" 
+                                              FontSize="14"
+                                              Background="#323F3F3F"
+                                                pu:CheckBoxHelper.BoxHeight="16"
+                                                pu:CheckBoxHelper.BoxWidth="16"
+                                                pu:CheckBoxHelper.CheckedBackground="#3F3F3F" 
+                                             
+                                              />
+                                    <Button x:Name="P_ChangeIDButton" Content="ChangeID" 
+                                        Width="92" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="10,0,0,0" 
+                                        />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                        <Border BorderBrush="#FFFAFAFA" BorderThickness="0" Margin="97,5"/>
+                    </DockPanel>
+                </TabItem>
+                <TabItem x:Name="ControlItem" Header="TabItem" Height="0">
+                    <DockPanel LastChildFill="True">
+                        <StackPanel DockPanel.Dock="Right" Width="Auto" HorizontalAlignment="Right" Background="#FFF0F0F0">
+                            <TextBlock Text="Alarm" FontSize="20" FontWeight="Bold" Foreground="Red"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,5">
+                                <Ellipse x:Name="AngleNoComIndicator" Height="15" 
+                                         Width="15" Fill="Red"
+                                         Margin="15,0,0,0"
+                                         />
+                                <TextBlock Text="AngleNoCom" FontSize="14"
+                                           Width="110" Margin="15,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Ellipse x:Name="AngleNoChangeIndicator" Height="15" 
+                                         Width="15" Fill="Red"
+                                         Margin="15,0,0,0"/>
+                                <TextBlock Text="AngleNoChange" FontSize="14"
+                                           Width="110" Margin="15,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Ellipse x:Name="ESoftLimitIndicator" Height="15" 
+                                         Width="15" Fill="Red"
+                                         Margin="15,0,0,0"/>
+                                <TextBlock Text="SoftLimit-E" FontSize="14"
+                                           Width="110" Margin="15,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Ellipse x:Name="WSoftLimitIndicator" Height="15" 
+                                         Width="15" Fill="Red"
+                                         Margin="15,0,0,0"/>
+                                <TextBlock Text="SoftLimit-W" FontSize="14"
+                                           Width="110" Margin="15,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Ellipse x:Name="MotorOverCurIndicator" Height="15" 
+                                         Width="15" Fill="Red"
+                                         Margin="15,0,0,0"/>
+                                <TextBlock Text="MotorOverCur" FontSize="14"
+                                           Width="110" Margin="15,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Ellipse x:Name="MotorReversalIndicator" Height="15"
+                                         Width="15" Fill="Red"
+                                         Margin="15,0,0,0"/>
+                                <TextBlock Text="MotorReversal" FontSize="14"
+                                           Width="110" Margin="15,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Ellipse x:Name="EmergencyStopIndicator" Height="15"
+                                         Width="15" Fill="Red"
+                                         Margin="15,0,0,0"/>
+                                <TextBlock Text="EmergencyStop" FontSize="14"
+                                           Width="110" Margin="15,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Ellipse x:Name="TimeLostIndicator" Height="15" 
+                                         Width="15" Fill="Red"
+                                         Margin="15,0,0,0"/>
+                                <TextBlock Text="TimeLost" FontSize="14"
+                                           Width="110" Margin="15,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Ellipse x:Name="RTCErrorIndicator" Height="15" 
+                                         Width="15" Fill="Red"
+                                         Margin="15,0,0,0"/>
+                                <TextBlock Text="RTCError" FontSize="14"
+                                           Width="110" Margin="15,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Ellipse x:Name="BatSocLowIndicator" Height="15" 
+                                         Width="15" Fill="Red"
+                                         Margin="15,0,0,0"/>
+                                <TextBlock Text="BatSOCLow" FontSize="14"
+                                           Width="110" Margin="15,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Ellipse x:Name="BatErrorIndicator" Height="15" 
+                                         Width="15" Fill="Red"
+                                         Margin="15,0,0,0"/>
+                                <TextBlock Text="BatError" FontSize="14"
+                                           Width="110" Margin="15,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Ellipse x:Name="BatNoComIndicator" Height="15" 
+                                         Width="15" Fill="Red"
+                                         Margin="15,0,0,0"/>
+                                <TextBlock Text="BatNoCom" FontSize="14"
+                                           Width="110" Margin="15,0,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Height="Auto"  DockPanel.Dock="Bottom" Background="#FFE3E3E3" Margin="0">
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="AutoButton" Content="Auto" 
+                                        Width="75" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="30,10,10,10"
+                                        />
+                                <Button x:Name="WindButton" Content="A-Wind" 
+                                        Width="75" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="10,10,10,10"
+                                        />
+                                <Button x:Name="SnowButton" Content="A-Snow" 
+                                        Width="75" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="10,10,10,10"
+                                        />
+                                <Button x:Name="EastButton" Content="M-East" 
+                                        Width="75" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="10,10,10,10"
+                                        />
+                                <Button x:Name="CleanButton" Content="Clean"
+                                        Width="75" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="10,10,10,10"
+                                        />
+                                <Button x:Name="HorizontalButton" Content="Horizontal"
+                                        Width="75" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="10,10,10,10"
+                                        />
+                                <Button x:Name="C_SleepButton" Content="Sleep"
+                                        Width="75" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="10,10,10,10"
+                                        />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="AIButton" Content="AI"
+                                        Width="75" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="30,10,10,10"
+                                        />
+                                <Button x:Name="LowPowerButton" Content="A-LPower"
+                                        Width="75" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="10,10,10,10"
+                                        />
+                                <Button x:Name="RainButton" Content="A-Rain"
+                                        Width="75" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="10,10,10,10"
+                                        />
+                                <Button x:Name="WestButton" Content="M-West"
+                                        Width="75" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="10,10,10,10"
+                                        />
+                                <Button x:Name="C_ResetButton" Content="Reset"
+                                        Width="75" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="10,10,10,10"
+                                        />
+                                <Button x:Name="CaliButton" Content="Cail"
+                                        Width="75" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="10,10,10,10"
+                                        />
+                                <TextBox x:Name="AIAngleTextBox" Height="27" Text="0" Width="35" 
+                                         FontSize="14"/>
+                                <Button x:Name="GoButton" Content="Go"
+                                        Width="75" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        Margin="10,10,10,10" Foreground="#FF070606"
+                                        />
+                            </StackPanel>
+                        </StackPanel>
+                        <Border BorderBrush="#FFFAFAFA" BorderThickness="0" 
+                                Margin="5,5,5,5">
+                            <StackPanel Margin="0" Width="Auto" Height="Auto" 
+                                        Background="White"  >
+                                <Border BorderBrush="#FF0066CC" 
+                                        BorderThickness="0,0,0,2" 
+                                        Margin="10,0,30,0">
+                                    <TextBlock Text="Information" Margin="0,5,0,0" 
+                                               FontSize="20" FontWeight="SemiBold" 
+                                               Foreground="#FF0068D0"/>
+                                </Border>
+
+                                <TextBlock Text="Version" FontSize="16" Margin="5,0,0,0"
+                                           FontWeight="SemiBold" Foreground="DimGray"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Firmware:" FontSize="14" 
+                                               Margin="10,0" Width="95"/>
+                                    <TextBlock x:Name="FirmwareTextBlock" Text="V0.00" FontSize="14"  
+                                               FontWeight="SemiBold" 
+                                               Width="60"/>
+                                    <TextBlock Text="Hardware:" FontSize="14" 
+                                               Width="115"/>
+                                    <TextBlock x:Name="HardwareTextBlock" Text="V0" 
+                                               FontSize="14" FontWeight="SemiBold"
+                                               Width="60"/>
+                                </StackPanel>
+
+                                <TextBlock Text="Angle" FontSize="16" Margin="5,0,0,0" 
+                                           FontWeight="SemiBold" Foreground="DimGray"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Elevation:" FontSize="14" 
+                                               Margin="10,0" Width="95"/>
+                                    <TextBlock x:Name="ElevationTextBlock" Text="106.25°" 
+                                               FontSize="14" FontWeight="SemiBold"
+                                               Width="60"/>
+                                    <TextBlock Text="TargetAngle:" FontSize="14" 
+                                               Width="115"/>
+                                    <TextBlock x:Name="TargetTextBock" Text="106.25°" 
+                                               FontSize="14" FontWeight="SemiBold"
+                                               Width="60"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Azimuth:" FontSize="14"
+                                               Margin="10,0" Width="95"/>
+                                    <TextBlock x:Name="AzimuthTextBlock" Text="106.25°" 
+                                               FontSize="14" FontWeight="SemiBold" 
+                                               Width="60"/>
+                                    <TextBlock Text="ActualAngle:" FontSize="14"
+                                               Width="115"/>
+                                    <TextBlock x:Name="AngleTextBlock" Text="106.25°" 
+                                               FontSize="14" FontWeight="SemiBold"
+                                               Width="60"/>
+                                </StackPanel>
+
+                                <TextBlock Text="Sensor" FontSize="16" FontWeight="SemiBold" 
+                                           Foreground="DimGray"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="MotorCur:" FontSize="14"
+                                               Margin="10,0" Width="95"/>
+                                    <TextBlock x:Name="MotorCurTextBlock" Text="1.52A" 
+                                               FontSize="14" FontWeight="SemiBold"
+                                               Width="60"/>
+                                    <TextBlock Text="Temperature:" FontSize="14"
+                                               Width="115"/>
+                                    <TextBlock x:Name="TemperatureTextBlock" Text="25℃" 
+                                               FontSize="14" FontWeight="SemiBold"
+                                               Width="60"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="WindSpeed:" FontSize="14"
+                                               Margin="10,0" Width="95"/>
+                                    <TextBlock x:Name="WindSpeedTextBlock" Text="18m/s" 
+                                               FontSize="14" FontWeight="SemiBold"
+                                               Width="60"/>
+                                </StackPanel>
+
+                                <TextBlock Text="PVPower" FontSize="16" FontWeight="SemiBold" Foreground="DimGray"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="PVBuckVol:" FontSize="14"
+                                               Margin="10,0" Width="95"/>
+                                    <TextBlock x:Name="PVBuckVolTextBlock" Text="30.01V" 
+                                               FontSize="14" FontWeight="SemiBold" 
+                                               Width="60"/>
+                                    <TextBlock Text="PVSensorCur:" FontSize="14"
+                                               Width="115"/>
+                                    <TextBlock x:Name="PVStringCurTextBlock" Text="6.32|3.26A" 
+                                               FontSize="14" FontWeight="SemiBold"
+                                               Width="80"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="PVStringVol:" FontSize="14"
+                                               Margin="10,0" Width="95"/>
+                                    <TextBlock Text="0.00V" FontSize="14" FontWeight="SemiBold"
+                                               Width="60"/>
+                                </StackPanel>
+
+
+                                <TextBlock Text="BatteryPower" FontSize="16" FontWeight="SemiBold" Foreground="DimGray"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="BatVol /SOC:" FontSize="14"
+                                               Margin="10,0" Width="95"/>
+                                    <TextBlock x:Name="BatVolSocTextBlock" Text="28.02/82%" 
+                                               FontSize="14" FontWeight="SemiBold" 
+                                               Width="90"/>
+                                    <TextBlock Text="BatCur:" FontSize="14"
+                                               Width="65"/>
+                                    <TextBlock x:Name="BatCurTextBlock" Text="0.35A" 
+                                               FontSize="14" FontWeight="SemiBold"
+                                               Width="50"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="BatTemp:" FontSize="14"
+                                               Margin="10,0" Width="95"/>
+                                    <TextBlock x:Name="BatTempTextBlock" Text="0.35℃" 
+                                               FontSize="14" FontWeight="SemiBold"/>
+                                </StackPanel>
+
+                                <TextBlock Text="Charge" FontSize="16" FontWeight="SemiBold" Foreground="DimGray"/>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Status:" FontSize="14"
+                                               Margin="10,0" Width="45"/>
+                                    <Ellipse x:Name="HeatIndicator" Height="15" Width="15" Fill="Green"/>
+                                    <TextBlock Text="Heating" FontSize="14" FontWeight="SemiBold"/>
+                                    <Ellipse x:Name="PreChargeIndicator" Height="15" Width="15" Fill="Green"/>
+                                    <TextBlock Text="Prechrage" FontSize="14" FontWeight="SemiBold"/>
+                                    <Ellipse x:Name="CCCVIndicator" Height="15" Width="15" Fill="Green"/>
+                                    <TextBlock  Text="CC-CV" FontSize="14" FontWeight="SemiBold"/>
+                                    <Ellipse x:Name="TerminationIndicator" Height="15" Width="15" Fill="Green"/>
+                                    <TextBlock Text="Termination" FontSize="14" FontWeight="SemiBold"/>
+
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Error:" FontSize="14"
+                                               Margin="10,0" Width="45"/>
+                                    <Ellipse x:Name="MaxTimeIndicator" Height="15" Width="15" Fill="Green"/>
+                                    <TextBlock Text="MaxTime" FontSize="14" FontWeight="SemiBold"/>
+                                    <Ellipse x:Name="BatShortIndicator" Height="15" Width="15" Fill="Green"/>
+                                    <TextBlock  Text="BatShort" FontSize="14" FontWeight="SemiBold"/>
+                                    <Ellipse x:Name="BatMissingIndicator" Height="15" Width="15" Fill="Green"/>
+                                    <TextBlock Text="BatMissing" FontSize="14" FontWeight="SemiBold"/>
+                                </StackPanel>
+
+                                <Border BorderBrush="#FF0066CC" BorderThickness="0,0,0,2" Margin="10,0,30,0">
+                                    <TextBlock Text="Time" FontSize="20" FontWeight="SemiBold" Foreground="#FF0068D0"/>
+                                </Border>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="TimeTextBlock" Text="2018-12-01 19:24:33" 
+                                               FontSize="14" FontWeight="SemiBold"
+                                               Margin="10,0" VerticalAlignment="Center"
+                                               />
+                                    <Button x:Name="UpdateTimeButton" Content="Update" 
+                                        Width="75" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        />
+                                </StackPanel>
+
+                                <Border BorderBrush="#FF0066CC" BorderThickness="0,0,0,2" Margin="10,0,30,0">
+                                    <TextBlock Text="NewID" FontSize="20" FontWeight="SemiBold" Foreground="#FF0068D0"/>
+                                </Border>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBox x:Name="NewIDTextBox" Height="24" Text="1" 
+                                             Width="41" FontSize="14" HorizontalAlignment="Center"
+                                             Margin="10,0"/>
+
+                                    <CheckBox x:Name="C_BoardIDCheckBox" Content="Boardcast" 
+                                              FontSize="14"
+                                              Background="#323F3F3F"
+                                                pu:CheckBoxHelper.BoxHeight="16"
+                                                pu:CheckBoxHelper.BoxWidth="16"
+                                                pu:CheckBoxHelper.CheckedBackground="#3F3F3F" 
+                                             
+                                              />
+                                    <Button x:Name="ChangeIDButton" Content="ChangeID" 
+                                        Width="92" Height="28" FontSize="14" 
+                                        Click="Button_Click"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                            Margin="10,0,0,0" 
+                                        />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                        <Border BorderBrush="#FFFAFAFA" BorderThickness="0" 
+                                Margin="5">
+                            <StackPanel  Width="Auto" Height="Auto" 
+                                         Background="White">
+                                <Border BorderBrush="#FF0066CC" 
+                                        BorderThickness="0,0,0,2" 
+                                        Margin="10,0,30,0">
+                                    <TextBlock Text="Parameter" 
+                                                Margin="0,5,0,0"
+                                                FontSize="20" 
+                                               FontWeight="SemiBold" 
+                                               Foreground="#FF0068D0"/>
+                                </Border>
+                                <TextBlock Text="Astronomy" 
+                                           FontSize="16" FontWeight="SemiBold" 
+                                           Foreground="DimGray"
+                                           Margin="5,0,332,0"
+                                           />
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Longitude" 
+                                               FontSize="14"
+                                               Width="100"
+                                               Margin="10,0,0,0"
+                                               />
+                                    <TextBox x:Name="LongitudeTextBox" Height="24" 
+                                             TextWrapping="Wrap" Text="100.0978" 
+                                             Width="100" FontSize="14" 
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             />
+                                    <TextBlock Text="Latitude" FontSize="14"  
+                                               Width="100" Margin="10,0,0,0"
+                                               />
+                                    <TextBox x:Name="LatitudeTextBox" Height="24" 
+                                             TextWrapping="Wrap" Text="100.0978" 
+                                             Width="100" FontSize="14" 
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="TimeZone" FontSize="14"  
+                                               Width="100"
+                                               Margin="10,0,0,0"/>
+                                    <TextBox x:Name="TimeZoneTextBox" Height="24" 
+                                             TextWrapping="Wrap" Text="8" 
+                                             Width="100" FontSize="14"
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                                />
+                                </StackPanel>
+                                <TextBlock Text="Array" FontSize="16" 
+                                           FontWeight="SemiBold" 
+                                           Foreground="DimGray"
+                                           Margin="5,0,0,0"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="ModuleWidth" FontSize="14"  
+                                               Width="100"
+                                               Margin="10,0,0,0"/>
+                                    <TextBox x:Name="ModuleWidthTextBox" Height="24" 
+                                             TextWrapping="Wrap" Text="100.0978" 
+                                             Width="100" FontSize="14" 
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             />
+                                    <TextBlock Text="PostSpace" FontSize="14" 
+                                               Width="100"
+                                               Margin="10,0,0,0"  
+                                               />
+                                    <TextBox x:Name="PostSpaceTextBox" Height="24" 
+                                             TextWrapping="Wrap" Text="100.0978" 
+                                             Width="100" FontSize="14" 
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="TerrSlope" FontSize="14"  
+                                               Width="100"
+                                               Margin="10,0,0,0"/>
+                                    <TextBox x:Name="TerrSlopeTextBox" Height="24" 
+                                             TextWrapping="Wrap" Text="8" 
+                                             Width="100" FontSize="14"
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             />
+                                </StackPanel>
+                                <TextBlock Text="Accuracy&amp;OverCurrent" 
+                                           FontSize="16" FontWeight="SemiBold" 
+                                           Foreground="DimGray"
+                                           Margin="5,0,0,0"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Accuracy" FontSize="14"  
+                                               Width="100"
+                                               Margin="10,0,0,0"/>
+                                    <TextBox x:Name="AccuracyTextBox" Height="24" 
+                                             TextWrapping="Wrap" Text="100.0978" 
+                                             Width="100" FontSize="14" 
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             />
+                                    <TextBlock Text="MaxMotorCur" FontSize="14"  
+                                               Width="100"
+                                               Margin="10,0,0,0"/>
+                                    <TextBox x:Name="MaxMotorCurTextBox" Height="24" 
+                                             TextWrapping="Wrap" Text="8" 
+                                             Width="100" FontSize="14"
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Orientation:" FontSize="14"  
+                                               Width="100"
+                                               Margin="10,0,0,0"
+                                               />
+                                    <CheckBox x:Name="EastwardCheckBox" Height="18" 
+                                                  Width="72"
+                                                  Content="East"
+                                                  pu:CheckBoxHelper.CheckBoxStyle="Switch"
+                                                  pu:CheckBoxHelper.BoxHeight="16"
+                                                  pu:CheckBoxHelper.BoxWidth="24"
+                                                  pu:CheckBoxHelper.CheckedBackground="#3F3F3F"
+                                                  pu:CheckBoxHelper.CheckedContent="West"                                                  
+                                              />
+                                </StackPanel>
+                                <TextBlock Text="ProtectionAngle" FontSize="16" 
+                                           FontWeight="SemiBold" 
+                                           Foreground="DimGray"
+                                           Margin="5,0,0,0"
+                                           />
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="ESoftLimit" FontSize="14"  
+                                               Width="100"
+                                               Margin="10,0,0,0"/>
+                                    <TextBox x:Name="ESoftLimitTextBox" Height="24" 
+                                             TextWrapping="Wrap" Text="100.0978" 
+                                             Width="100" FontSize="14" 
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             />
+                                    <TextBlock Text="WSoftLimit" FontSize="14"  
+                                               Width="100"
+                                               Margin="10,0,0,0"/>
+                                    <TextBox x:Name="WSoftLimitTextBox" Height="24" 
+                                             TextWrapping="Wrap" Text="100.0978" 
+                                             Width="100" FontSize="14" 
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="CleanAngle" FontSize="14"  
+                                               Width="100"
+                                               Margin="10,0,0,0"/>
+                                    <TextBox x:Name="CleanAngleTextBox" Height="24" 
+                                             TextWrapping="Wrap" Text="100.0978" 
+                                             Width="100" FontSize="14" 
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             />
+                                    <TextBlock Text="NightDock" FontSize="14"  
+                                               Width="100"
+                                               Margin="10,0,0,0"/>
+                                    <TextBox x:Name="NightDockTextBox" Height="24" 
+                                             TextWrapping="Wrap" Text="100.0978" 
+                                             Width="100" FontSize="14" 
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             />
+                                </StackPanel>
+                                <TextBlock Text="Weather" FontSize="16" 
+                                           FontWeight="SemiBold" 
+                                           Foreground="DimGray"
+                                           Margin="5,0,0,0"
+                                           />
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Up" FontSize="14"  
+                                               Margin="150,0,0,0"/>
+                                    <TextBlock Text="Down" FontSize="14"  
+                                               Margin="70,0,0,0"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="ProWindSpeed" FontSize="14"  
+                                               Width="110"
+                                               Margin="10,0,0,0"/>
+                                    <TextBox x:Name="ProWindUpTextBox" Height="24" 
+                                             TextWrapping="Wrap" Text="100.0978" 
+                                             Width="100" FontSize="14" 
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             />
+                                    <TextBox x:Name="ProWindDownTextBox" Height="24"
+                                             TextWrapping="Wrap" Text="8" 
+                                             Width="100" FontSize="14"
+                                             Margin="10,0,0,0"
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="ProDelay" FontSize="14"  
+                                               Width="110"
+                                               Margin="10,0,0,0"/>
+                                    <TextBox x:Name="ProTimeUpTextBox" Height="24" 
+                                             TextWrapping="Wrap" Text="100.0978" 
+                                             Width="100" FontSize="14" 
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             />
+                                    <TextBox x:Name="ProTimeDownTextBox" Height="24"
+                                             TextWrapping="Wrap" Text="8" 
+                                             Width="100" FontSize="14"
+                                             Margin="10,0,0,0"
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                             />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,30,0,0" >
+                                    <Button x:Name="WriteAllButton" Content="WriteAll" 
+                                            Width="75" Height="28" FontSize="14" 
+                                            BorderBrush="{x:Null}" 
+                                            Click="Button_Click"
+                                            pu:ButtonHelper.ClickStyle="Sink"
+                                            Background="#FFC1C1C1"
+                                            pu:ButtonHelper.HoverBrush="#3F3F3F"
+                                            Margin="70,0,0,0"
+                                            />
+                                    <Button x:Name="ReadAllButton" Content="ReadAll" 
+                                            Width="75" Height="28" FontSize="14" 
+                                            BorderBrush="{x:Null}"                                              
+                                            Click="Button_Click"
+                                            pu:ButtonHelper.ClickStyle="Sink"
+                                            Background="#FFC1C1C1"
+                                            pu:ButtonHelper.HoverBrush="#3F3F3F"
+                                            Margin="70,0,0,0"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DockPanel>
+                </TabItem>
+                <TabItem x:Name="LoraSearchItem" Header="TabItem" Height="0">
+                    <TextBlock Text="NONE" FontSize="20"/>
+                </TabItem>
+                <TabItem x:Name="UpgradeItem" Header="TabItem" Height="0">
+                    <DockPanel LastChildFill="True">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal" Margin="170,120,0,0" >
+                                <TextBlock x:Name="upgradepath"
+                                           Text="Path:"
+                                           Width="120"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="170,20,0,0">
+                                <TextBlock Text="Count:" 
+                                           Width="120"/>
+                                <TextBox x:Name="upgradecount" Height="24" 
+                                     TextWrapping="Wrap" Text="1" Width="100" 
+                                     FontSize="14" HorizontalAlignment="Center"
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                         />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="170,20,0,0">
+                                <TextBlock Text="Device Type:" 
+                                           Width="120"/>
+                                <TextBox x:Name="upgradedevicetype" Height="24" 
+                                     TextWrapping="Wrap" Text="1" Width="100" 
+                                     FontSize="14" HorizontalAlignment="Center"
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                         />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="170,20,0,0">
+                                <TextBlock Text="Delay Time(ms):" 
+                                           Width="120"/>
+                                <TextBox x:Name="upgradedelaytime" Height="24" 
+                                     TextWrapping="Wrap" Text="1" Width="100" 
+                                     FontSize="14" HorizontalAlignment="Center"
+                                             pu:TextBoxHelper.FocusedBorderBrush="#B5B5B5"
+                                             pu:TextBoxHelper.FocusedShadowColor="#B5B5B5"
+                                             pu:TextBoxHelper.IsClearButtonVisible="True"
+                                         />
+                            </StackPanel>
+                            <ProgressBar x:Name="upgradeprogressbar" Height="30" 
+                                         Width="656"
+                                         Margin="170,20,0,0"
+                                         Background="#1E00A0FF"
+                                         Foreground="#FF00A0FF"
+                                            pu:ProgressBarHelper.IsPercentVisible="True"
+                                          
+                                         />
+                            <Button x:Name="upgradefileselect" 
+                                    Content="Select Upgrade File" 
+                                    Margin="170,20,0,0"
+                                    Width="145" Height="28" 
+                                    BorderBrush="{x:Null}"
+                                    FontSize="14" Click="Button_Click"
+                                    pu:ButtonHelper.ClickStyle="Sink"
+                                    Background="#FFC1C1C1"
+                                    pu:ButtonHelper.HoverBrush="#3F3F3F"                                    />
+                        </StackPanel>
+                    </DockPanel>
+                </TabItem>
+                <TabItem x:Name="ScanItem" Header="TabItem" Height="0">
+                    <TextBlock Text="NONE" FontSize="20"/>
+                </TabItem>
+                <TabItem x:Name="OneShotItem" Header="TabItem" Height="0">
+                    <DockPanel LastChildFill="True">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal" Margin="110,80,0,10" >
+                                <Button x:Name="oneshotonekeyall" 
+                                        Content="One Key Control Box All Parameter And Lora" 
+                                        Width="331" Height="28" 
+                                        BorderBrush="{x:Null}" 
+                                        FontSize="14" Click="Button_OneKey"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        />
+                                <CheckBox x:Name="onekeyallPLcheckbox" 
+                                          Content="连续" Height="48" 
+                                          Width="100" 
+                                          Click="onekeyallPLcheckbox_Click" 
+                                          Margin="25,0,0,0"
+                                          pu:CheckBoxHelper.BoxHeight="16"
+                                          pu:CheckBoxHelper.BoxWidth="16"
+                                          pu:CheckBoxHelper.CheckedBackground="#3F3F3F"
+                                          />
+                                <Label x:Name="onekeyIDlabel" Content="当前烧写ID：" 
+                                       Height="28" Width="137" 
+                                       VerticalContentAlignment="Center"
+                                       />
+                                <TextBox x:Name="onekeyIDtextbox" Height="38" 
+                                         TextWrapping="Wrap" 
+                                         Width="108"
+                                         pu:TextBoxHelper.Watermark="请输入ID"
+                                         pu:TextBoxHelper.FocusedBorderBrush="#969696"
+                                         pu:TextBoxHelper.FocusedShadowColor="#969696"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="110,50,0,10">
+                                <Button x:Name="oneshotonekeyeliminatedefect" 
+                                        Content="One Key Control Box Eliminate Defect" 
+                                        Width="331" Height="28" 
+                                        BorderBrush="{x:Null}" 
+                                        FontSize="14" Click="Button_OneKey"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        />
+                                <Label x:Name="onekeyIDEDlabel" Content="当前烧写ID：" 
+                                       Height="28" Width="137" 
+                                       VerticalContentAlignment="Center" 
+                                       Margin="35,0,0,0"
+                                       />
+                                <TextBox x:Name="onekeyIDEDtextbox" Height="38" 
+                                         TextWrapping="Wrap" 
+                                         Width="108"
+                                         pu:TextBoxHelper.Watermark="请输入ID"
+                                         pu:TextBoxHelper.FocusedBorderBrush="#969696"
+                                         pu:TextBoxHelper.FocusedShadowColor="#969696"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="110,50,0,10">
+                                <Button x:Name="P_oneshotonekeyall" 
+                                        Content="One Key Power Box All Parameter And Lora" 
+                                        Width="331" Height="28" 
+                                        BorderBrush="{x:Null}" 
+                                        FontSize="14" Click="Button_OneKey"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        />
+                                <CheckBox x:Name="P_onekeyallPLcheckbox" 
+                                          Content="连续" Height="48" 
+                                          Width="100" 
+                                          Click="onekeyallPLcheckbox_Click" 
+                                          Margin="25,0,0,0"
+                                          pu:CheckBoxHelper.BoxHeight="16"
+                                          pu:CheckBoxHelper.BoxWidth="16"
+                                          pu:CheckBoxHelper.CheckedBackground="#3F3F3F"
+                                          />
+                                <Label x:Name="P_onekeyIDlabel" Content="当前烧写ID：" 
+                                       Height="28" Width="137" 
+                                       VerticalContentAlignment="Center"
+                                       />
+                                <TextBox x:Name="P_onekeyIDtextbox" Height="38" 
+                                         TextWrapping="Wrap" 
+                                         Width="108"
+                                         pu:TextBoxHelper.Watermark="请输入ID"
+                                         pu:TextBoxHelper.FocusedBorderBrush="#969696"
+                                         pu:TextBoxHelper.FocusedShadowColor="#969696"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="110,50,0,10">
+                                <Button x:Name="P_oneshotonekeyeliminatedefect" 
+                                        Content="One Key Power Box Eliminate Defect" 
+                                        Width="331" Height="28" 
+                                        BorderBrush="{x:Null}" 
+                                        FontSize="14" Click="Button_OneKey"
+                                        pu:ButtonHelper.ClickStyle="Sink"
+                                        Background="#FFC1C1C1"
+                                        pu:ButtonHelper.HoverBrush="#3F3F3F" 
+                                        />
+                                <Label x:Name="P_onekeyIDEDlabel" Content="当前烧写ID：" 
+                                       Height="28" Width="137" 
+                                       VerticalContentAlignment="Center" 
+                                       Margin="35,0,0,0"
+                                       />
+                                <TextBox x:Name="P_onekeyIDEDtextbox" Height="38" 
+                                         TextWrapping="Wrap" 
+                                         Width="108"
+                                         pu:TextBoxHelper.Watermark="请输入ID"
+                                         pu:TextBoxHelper.FocusedBorderBrush="#969696"
+                                         pu:TextBoxHelper.FocusedShadowColor="#969696"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DockPanel>
+                </TabItem>
+                <TabItem x:Name="AboutItem" Header="TabItem" Height="0">
+                    <DockPanel LastChildFill="True">
+                        <StackPanel>
+                            <Image Source="LOGO1.png" Height="99" Width="229" 
+                                   HorizontalAlignment="Center" Margin="376,50,376,0"/>
+                            <TextBlock Text="ONE FOR ALL" FontSize="20" 
+                                       FontWeight="SemiBold" Foreground="#FF5B5B5B" 
+                                       HorizontalAlignment="Center" 
+                                       Margin="0,20,0,0"/>
+                            <TextBlock Text="Version: 0.01 " FontSize="16" 
+                                       Foreground="Black" 
+                                       HorizontalAlignment="Center"
+                                       Margin="0,5,0,0"
+                                       />
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" 
+                                        Margin="0,10,0,0" >
+                                <TextBlock Text="Language:" FontSize="14" Width="80"/>
+                                <ComboBox x:Name="LanguageSelect" VerticalAlignment="Top" Height="18" 
+                                          Width="74" SelectionChanged="LanguageSelect_SelectionChanged"
+                                          pu:ComboBoxHelper.HoverBackground="#1EB5B5B5"
+                                          pu:ComboBoxHelper.SelectedBackground="#32B5B5B5"
+                                          >
+                                    <ComboBoxItem Content="English"/>
+                                    <ComboBoxItem Content="简体中文"/>
+                                </ComboBox>
+                            </StackPanel>
+                            <TextBlock Text="建议请投稿 tao.tang@arctechsolar.com " 
+                                       FontSize="16" Foreground="Black" 
+                                       HorizontalAlignment="Center"
+                                       Margin="0,10,0,0"
+                                       />
+                            <TextBlock Text="If you have any suggestions, please submit to tao.tang@arctechsolar.com " Canvas.Left="276" Canvas.Top="10" FontSize="16" Foreground="Black" HorizontalAlignment="Center"/>
+                            <TextBlock Text="软件遇到BUG如果未响应请重启，后续改进" Canvas.Left="276" Canvas.Top="10" FontSize="16" Foreground="Black" HorizontalAlignment="Center"/>
+                        </StackPanel>
+
+                    </DockPanel>
+
+
+
+                </TabItem>
+
+            </TabControl>
+        </Grid>
+    </Grid>
+</pu:WindowX>
